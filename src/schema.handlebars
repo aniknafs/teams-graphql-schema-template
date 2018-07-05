@@ -1,0 +1,53 @@
+{{#ifCond @root.config.resolvers "!==" false}}
+import { GraphQLResolveInfo } from 'graphql';
+
+type Resolver<Result, Args = any> = (
+  parent: any,
+  args: Args,
+  context: any,
+  info: GraphQLResolveInfo
+) => Promise<Result> | Result;
+{{/ifCond}}
+
+{{#each scalars}}
+
+{{ toComment description }}
+export type {{ name }} = any;
+{{/each}}
+{{#each interfaces}}
+  {{~> type }}
+
+{{/each}}
+{{#each types}}
+  {{~> type }}
+
+{{/each}}
+{{#ifCond @root.config.resolvers "!==" false }}
+{{#each types}}
+  {{~> resolver }}  
+
+{{/each}}
+{{/ifCond}}
+{{#each inputTypes}}
+  {{~> type }}
+
+{{/each}}
+{{~#each types}}
+  {{~#each fields}}
+    {{~# if hasArguments }}
+export interface {{ toPascalCase name }}{{ toPascalCase ../name }}Args {
+{{#each arguments}}
+  {{ name }}{{ getOptionals this }}: {{ convertedType this }}; {{ toComment description }}
+{{/each}}
+}
+    {{/if}}
+  {{/each}}
+{{/each}}
+{{#each enums}}
+  {{~> enum }}
+{{/each}}
+{{#each unions}}
+{{ toComment description }}
+export type {{ name }} = {{#each possibleTypes}}{{this}}{{#unless @last}} | {{/unless}}{{/each}};
+
+{{/each}}
