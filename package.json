@@ -14,7 +14,9 @@
     "codegen-templates-scripts": "0.10.1",
     "common-tags": "1.8.0",
     "graphql-codegen-compiler": "0.10.1",
-    "graphql-codegen-core": "0.10.1"
+    "graphql-codegen-core": "0.10.1",
+    "graphql": "0.13.2",
+    "@types/graphql": "0.13.0"
   },
   "main": "./dist/index.js",
   "typings": "dist/index.d.ts",
