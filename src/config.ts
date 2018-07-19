@@ -38,10 +38,10 @@ export const config: GeneratorConfig = {
     getFieldResolverName,
     getOptionals
   },
-  outFile: 'types.ts',
   config: {
-    resolvers: false,
+    resolvers: true,
     avoidOptionals: false
-  }
+  },
+  outFile: 'types.ts'
   // filesExtension: 'interface.ts'
 };
