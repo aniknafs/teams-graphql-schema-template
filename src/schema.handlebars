@@ -11,7 +11,7 @@ type Resolver<Result, Args = any> = (
 
 {{#each scalars}}
 
-{{ toComment description }}
+
 export type {{ name }} = any;
 {{/each}}
 {{#each interfaces}}
@@ -37,7 +37,7 @@ export type {{ name }} = any;
     {{~# if hasArguments }}
 export interface {{ toPascalCase name }}{{ toPascalCase ../name }}Args {
 {{#each arguments}}
-  {{ name }}{{ getOptionals this }}: {{ convertedType this }}; {{ toComment description }}
+  {{ name }}{{ getOptionals this }}: {{ convertedType this }}; 
 {{/each}}
 }
     {{/if}}
@@ -47,7 +47,7 @@ export interface {{ toPascalCase name }}{{ toPascalCase ../name }}Args {
   {{~> enum }}
 {{/each}}
 {{#each unions}}
-{{ toComment description }}
+
 export type {{ name }} = {{#each possibleTypes}}{{this}}{{#unless @last}} | {{/unless}}{{/each}};
 
 {{/each}}

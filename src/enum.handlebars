@@ -1,4 +1,5 @@
-{{ toComment description }}
+
+
 {{#if @root.config.enumsAsTypes }}
 export type {{ name }} = {{#each values }}"{{ value }}"{{#unless @last}} | {{/unless}}{{/each}};
 {{else}}
