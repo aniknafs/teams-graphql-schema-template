@@ -1,6 +1,6 @@
 {
-  "name": "graphql-codegen-typescript-template",
-  "version": "0.10.1",
+  "name": "teams-graphql-schema-template",
+  "version": "0.1.0",
   "description": "",
   "license": "MIT",
   "scripts": {
